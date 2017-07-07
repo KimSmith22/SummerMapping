@@ -18,6 +18,12 @@ refresh();
       console.log(response);
       refresh();
     });
+    $scope.update = function() {
+      console.log($scope.event._id);
+      $http.put('/eventlist/' + $scope.event._id, $scope.event).then(function(response) {
+        refresh();
+      })
+    };
   };
 
   $scope.remove = function(id) {
@@ -34,12 +40,6 @@ refresh();
     });
   };
 
-  $scope.update = function() {
-    console.log($scope.event._id);
-    $http.put('/eventlist/' + $scope.event._id, $scope.event).then(function(response) {
-      refresh();
-    })
-  };
 
   $scope.deselect = function() {
     $scope.event = null;

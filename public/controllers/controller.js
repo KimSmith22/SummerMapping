@@ -21,27 +21,27 @@ refresh();
 
   $scope.remove = function(id) {
     console.log(id);
-    $http.delete('/eventlist/' + id).success(function(response) {
+    $http.delete('/eventlist/' + id).then(function(response) {
       refresh();
     });
   };
 
   $scope.edit = function(id) {
     console.log(id);
-    $http.get('/eventlist/' + id).success(function(response) {
-      $scope.contact = response;
+    $http.get('/eventlist/' + id).then(function(response) {
+      $scope.event = response;
     });
   };
 
   $scope.update = function() {
-    console.log($scope.contact._id);
-    $http.put('/eventlist/' + $scope.contact._id, $scope.contact).success(function(response) {
+    console.log($scope.event._id);
+    $http.put('/eventlist/' + $scope.event._id, $scope.event).then(function(response) {
       refresh();
     })
   };
 
   $scope.deselect = function() {
-    $scope.contact = "";
+    $scope.event = "";
   }
 
   }]);﻿

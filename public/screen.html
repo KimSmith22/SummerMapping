@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/page.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+  <title>GE-Capstone Project</title>
+  <meta name="description" content="Carnival and Event Mapping tool">
+
+  <!-- See https://goo.gl/OOhYW5 -->
+  <link rel="manifest" href="/manifest.json">
+
+  <script src="/bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+  <link rel="import" href="src/elements/event-one.html">
+
+</head>
+
+<body>
+  <div id="wrapper">
+      <div class="overlay"></div>
+
+      <!-- Sidebar -->
+      <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+          <ul class="nav sidebar-nav">
+              <li class="sidebar-brand">
+                  <a href="#">
+                     Brand
+                  </a>
+              </li>
+              <li>
+                  <a href="#">Enter Zip Code</a>
+              </li>
+              <li>
+                  <input type="text"/><button>Submit</button>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Events Near Me<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li class="dropdown-header">Select Radius</li>
+                  <li><a href="#">5 Miles</a></li>
+                  <li><a href="#">10 Miles</a></li>
+                  <li><a href="#">15 Miles</a></li>
+                </ul>
+              </li>
+              <li>
+                  <a href="#">Ascending</a>
+              </li>
+              <li>
+                  <a href="#">Descending</a>
+              </li>
+              <li>
+                  <a href="mailto:theapp@somemail.com">Contact</a>
+              </li>
+          </ul>
+      </nav>
+      <!-- /#sidebar-wrapper -->
+
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+          <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+              <span class="hamb-top"></span>
+        <span class="hamb-middle"></span>
+      <span class="hamb-bottom"></span>
+          </button>
+
+        <div> <!--Wrapper-->
+
+            <div class="container">
+              <div class="w3-card-4 col-lg-8 col-lg-offset-2" style="width:95%;">
+                <event-one></event-one>
+              </div>
+            </div>
+      </div>
+      <!-- /#wrapper -->
+
+  </div>
+   <!-- /#page-content-wrapper -->
+
+
+<script>
+$(document).ready(function () {
+var trigger = $('.hamburger'),
+    overlay = $('.overlay'),
+   isClosed = false;
+
+  trigger.click(function () {
+    hamburger_cross();
+  });
+
+  function hamburger_cross() {
+
+    if (isClosed == true) {
+      overlay.hide();
+      trigger.removeClass('is-open');
+      trigger.addClass('is-closed');
+      isClosed = false;
+    } else {
+      overlay.show();
+      trigger.removeClass('is-closed');
+      trigger.addClass('is-open');
+      isClosed = true;
+    }
+}
+
+$('[data-toggle="offcanvas"]').click(function () {
+      $('#wrapper').toggleClass('toggled');
+});
+});
+</script>
+
+</body>
+
+</html>

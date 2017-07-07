@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
   <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/page.css">
-    <title>Summer Event Mapping'</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>GE-Capstone Project</title>
+    <meta name="description" content="Carnival and Event Mapping tool">
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
   </head>
   <body>
   <div id="wrapper">
@@ -71,12 +79,12 @@
           <tbody>
             <tr>
               <td><input class="form-control" ng-model="event.name"></td>
-              <td><input class="form-control" ng-model="event.startDate"></td>
+              <td><input class="form-control" ng-model="event.startDate"></td>  <!--type="date" (put this next to startDate)-->
               <td><input class="form-control" ng-model="event.price"></td>
               <td><input class="form-control" ng-model="event.location"></td>
               <td><button class="btn btn-primary" ng-click="addEvent()">Add Event</button></td>
-              <td><button class="btn btn-info" ng-click="update()">Update</button>&nbsp;&nbsp;&nbsp;
-                <button class="btn btn-info" ng-click="deselect()">Clear</button></td>
+              <td><button class="btn btn-primary" ng-click="update()">Update</button>&nbsp;&nbsp;&nbsp;
+                <button class="btn btn-primary" ng-click="deselect()">Clear</button></td>
             </tr>
             <tr ng-repeat="event in eventlist">
               <td>{{event.name}}</td>

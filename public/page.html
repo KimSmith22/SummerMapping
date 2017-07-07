@@ -80,10 +80,11 @@
             <tr>
               <td><input class="form-control" ng-model="event.name"></td>
               <td><input class="form-control" ng-model="event.startDate"></td>  <!--type="date" (put this next to startDate)-->
-              <td><input class="form-control" ng-model="event.price"></td>
+              <td><input class="form-control" ng-model="event.price"></td> <!--$<input type="number" name="currency" min="0" max="9999" step="0.01" size="4"
+    title="CDA Currency Format - no dollar sign and no comma(s) - cents (.##) are optional" />-->
               <td><input class="form-control" ng-model="event.location"></td>
               <td><button class="btn btn-primary" ng-click="addEvent()">Add Event</button></td>
-              <td><button class="btn btn-primary" ng-click="update()">Update</button>&nbsp;&nbsp;&nbsp;
+              <td><button class="btn btn-primary" ng-click="update()">Update</button>&nbsp;&nbsp;
                 <button class="btn btn-primary" ng-click="deselect()">Clear</button></td>
             </tr>
             <tr ng-repeat="event in eventlist">

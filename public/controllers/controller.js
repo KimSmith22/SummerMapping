@@ -6,6 +6,7 @@ var refresh = function(){
   $http.get('/eventlist/').then(function(response) {
     console.log("I got the data I requested");
     $scope.eventlist = response;
+    $scope.event = null;
   });
 };
 
@@ -41,7 +42,8 @@ refresh();
   };
 
   $scope.deselect = function() {
-    $scope.event = "";
-  }
+    $scope.event = null;
+    refresh();
+  };
 
   }]);﻿

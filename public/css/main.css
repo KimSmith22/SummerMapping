@@ -1,0 +1,28 @@
+body{
+  height: 650px;
+  width: 550px;
+  background-color: #00ffea;
+  /*background-image: url('/img/fun.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;*/
+  color: black;
+  text-align: center;
+}
+.headline{
+  font-weight: bold;
+  font-size: 80px;
+}
+#close-image img {
+    display: block;
+    height: 130px;
+    width: 100px;
+}
+button {
+    display: inline-block;
+    height: 130px;
+    padding: 0;
+    margin: 0;
+    vertical-align: top;
+    width: 100px;
+}

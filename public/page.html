@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/page.css">
+    <title>Summer Event Mapping'</title>
+  </head>
+  <body>
+  <div id="wrapper">
+      <div class="overlay"></div>
+
+      <!-- Sidebar -->
+      <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+          <ul class="nav sidebar-nav">
+              <li class="sidebar-brand">
+                  <a href="#">
+                     Brand
+                  </a>
+              </li>
+              <li>
+                  <a href="#">Enter Zip Code</a>
+              </li>
+              <li>
+                  <input type="text"/><button>Submit</button>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Events Near Me<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li class="dropdown-header">Select Radius</li>
+                  <li><a href="#">5 Miles</a></li>
+                  <li><a href="#">10 Miles</a></li>
+                  <li><a href="#">15 Miles</a></li>
+                </ul>
+              </li>
+              <li>
+                  <a href="#">Ascending</a>
+              </li>
+              <li>
+                  <a href="#">Descending</a>
+              </li>
+              <li>
+                  <a href="mailto:theapp@somemail.com">Contact</a>
+              </li>
+          </ul>
+      </nav>
+      <!-- /#sidebar-wrapper -->
+
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+          <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+              <span class="hamb-top"></span>
+        <span class="hamb-middle"></span>
+      <span class="hamb-bottom"></span>
+          </button>
+
+          <div class="container" ng-controller="AppCtrl">
+        <h1>Summer Event List</h1>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Date</th>
+              <th>Price</th>
+              <th>Location</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input class="form-control" ng-model="event.name"></td>
+              <td><input class="form-control" ng-model="event.startDate"></td>
+              <td><input class="form-control" ng-model="event.price"></td>
+              <td><input class="form-control" ng-model="event.location"></td>
+              <td><button class="btn btn-primary" ng-click="addEvent()">Add Event</button></td>
+              <td><button class="btn btn-info" ng-click="update()">Update</button>&nbsp;&nbsp;&nbsp;
+                <button class="btn btn-info" ng-click="deselect()">Clear</button></td>
+            </tr>
+            <tr ng-repeat="event in eventlist">
+              <td>{{event.name}}</td>
+              <td>{{event.startDate}}</td>
+              <td>{{event.price}}</td>
+              <td>{{event.location}}</td>
+              <!-- <td><button class="btn btn-danger" ng-click="remove(contact._id)">Remove</button></td>
+              <td><button class="btn btn-warning" ng-click="edit(contact._id)">Edit</button></td> -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js" charset="utf-8"></script>
+      <script src="controllers/controller.js" charset="utf-8"></script>
+    </body>
+  </html>
+
+
+  </div>
+   <!-- /#page-content-wrapper -->
+
+
+<script>
+$(document).ready(function () {
+var trigger = $('.hamburger'),
+    overlay = $('.overlay'),
+   isClosed = false;
+
+  trigger.click(function () {
+    hamburger_cross();
+  });
+
+  function hamburger_cross() {
+
+    if (isClosed == true) {
+      overlay.hide();
+      trigger.removeClass('is-open');
+      trigger.addClass('is-closed');
+      isClosed = false;
+    } else {
+      overlay.show();
+      trigger.removeClass('is-closed');
+      trigger.addClass('is-open');
+      isClosed = true;
+    }
+}
+
+$('[data-toggle="offcanvas"]').click(function () {
+      $('#wrapper').toggleClass('toggled');
+});
+});
+</script>
+
+</body>
+
+</html>

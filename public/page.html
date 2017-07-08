@@ -86,7 +86,8 @@
               <td><button class="btn btn-primary" ng-click="addEvent()">Add Event</button></td>
               <td><button class="btn btn-primary" ng-click="deselect()">Clear</button></td>
             </tr>
-            <tr ng-repeat="event in eventlist">
+            <tr ng-repeat="event in eventlist" ng-if="eventlist && eventlist!={undefined}">
+            <!-- <tr ng-repeat="event in eventlist"> -->
               <td>{{event.name}}</td>
               <td>{{event.startDate}}</td>
               <td>{{event.price}}</td>

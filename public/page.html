@@ -86,8 +86,7 @@
               <td><button class="btn btn-primary" ng-click="addEvent()">Add Event</button></td>
               <td><button class="btn btn-primary" ng-click="deselect()">Clear</button></td>
             </tr>
-            <tr ng-repeat="event in eventlist" ng-if="eventlist && eventlist!={undefined}">
-            <!-- <tr ng-repeat="event in eventlist"> -->
+            <tr ng-repeat="event in eventlist"> <!--also tried ng-repeat="event in eventlist track by $indexs"-->
               <td>{{event.name}}</td>
               <td>{{event.startDate}}</td>
               <td>{{event.price}}</td>
@@ -101,44 +100,42 @@
 
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js" charset="utf-8"></script>
       <script src="controllers/controller.js" charset="utf-8"></script>
-    </body>
-  </html>
 
 
   </div>
    <!-- /#page-content-wrapper -->
 
 
-<script>
-$(document).ready(function () {
-var trigger = $('.hamburger'),
-    overlay = $('.overlay'),
-   isClosed = false;
-
-  trigger.click(function () {
-    hamburger_cross();
-  });
-
-  function hamburger_cross() {
-
-    if (isClosed == true) {
-      overlay.hide();
-      trigger.removeClass('is-open');
-      trigger.addClass('is-closed');
+   <script>
+   $(document).ready(function () {
+   var trigger = $('.hamburger'),
+       overlay = $('.overlay'),
       isClosed = false;
-    } else {
-      overlay.show();
-      trigger.removeClass('is-closed');
-      trigger.addClass('is-open');
-      isClosed = true;
-    }
-}
 
-$('[data-toggle="offcanvas"]').click(function () {
-      $('#wrapper').toggleClass('toggled');
-});
-});
-</script>
+     trigger.click(function () {
+       hamburger_cross();
+     });
+
+     function hamburger_cross() {
+
+       if (isClosed == true) {
+         overlay.hide();
+         trigger.removeClass('is-open');
+         trigger.addClass('is-closed');
+         isClosed = false;
+       } else {
+         overlay.show();
+         trigger.removeClass('is-closed');
+         trigger.addClass('is-open');
+         isClosed = true;
+       }
+   }
+
+   $('[data-toggle="offcanvas"]').click(function () {
+         $('#wrapper').toggleClass('toggled');
+   });
+ });
+   </script>
 
 </body>
 

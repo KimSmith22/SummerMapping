@@ -18,7 +18,9 @@ paper-dialog.size-position {
     height: 300px;
     overflow: auto;
   }
-
+.indent{
+  margin-left: 25px;
+}
 /*-------------------------------*/
 /*           Wrappers            */
 /*-------------------------------*/

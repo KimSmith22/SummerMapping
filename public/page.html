@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
   <head>
+    <link rel="shortcut icon" href="images/favicon.ico"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -8,7 +9,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>GE-Capstone Project</title>
+    <title>Summer Event Mapping</title>
     <meta name="description" content="Carnival and Event Mapping tool">
 
     <!-- See https://goo.gl/OOhYW5 -->
@@ -24,29 +25,26 @@
           <ul class="nav sidebar-nav">
               <li class="sidebar-brand">
                   <a href="#">
-                     Brand
+                     FILTERS
                   </a>
               </li>
               <li>
                   <a href="#">Enter Zip Code</a>
               </li>
               <li>
-                  <input type="text"/><button>Submit</button>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Events Near Me<span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                  <li class="dropdown-header">Select Radius</li>
-                  <li><a href="#">5 Miles</a></li>
-                  <li><a href="#">10 Miles</a></li>
-                  <li><a href="#">15 Miles</a></li>
-                </ul>
+                  <input type="text" class="indent"/>
               </li>
               <li>
-                  <a href="#">Ascending</a>
+                  <a href="#">Festivals</a>
               </li>
               <li>
-                  <a href="#">Descending</a>
+                  <a href="#">Carnivals</a>
+              </li>
+              <li>
+                  <a href="#">Other Events</a>
+              </li>
+              <li>
+                  <button class="indent">Apply Filters</button>
               </li>
               <li>
                   <a href="mailto:theapp@somemail.com">Contact</a>
@@ -63,36 +61,33 @@
       <span class="hamb-bottom"></span>
           </button>
 
+
+
           <div class="container" ng-controller="AppCtrl">
-        <h1>Summer Event List</h1>
+
+            <center>
+              <iframe src="https://www.google.com/maps/d/embed?mid=1uZfdcufoZrdB0Xaiud-3WGbi5C8" width="600" height="380"></iframe>
+            </center>
+
+        <h1 class="text-center">Summer Event List</h1>
 
         <table class="table">
           <thead>
             <tr>
               <th>Name</th>
-              <th>Date</th>
+              <th>Start Date</th>
+              <th>End Date</th>
               <th>Price</th>
               <th>Location</th>
-              <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><input class="form-control" ng-model="event.name"></td>
-              <td><input class="form-control" ng-model="event.startDate"></td>  <!--type="date" (put this next to startDate)-->
-              <td><input class="form-control" ng-model="event.price"></td> <!--$<input type="number" name="currency" min="0" max="9999" step="0.01" size="4"
-    title="CDA Currency Format - no dollar sign and no comma(s) - cents (.##) are optional" />-->
-              <td><input class="form-control" ng-model="event.location"></td>
-              <td><button class="btn btn-primary" ng-click="addEvent()">Add Event</button></td>
-              <td><button class="btn btn-primary" ng-click="deselect()">Clear</button></td>
-            </tr>
-            <tr ng-repeat="event in eventlist"> <!--also tried ng-repeat="event in eventlist track by $indexs"-->
+            <tr ng-repeat="event in eventlist">
               <td>{{event.name}}</td>
               <td>{{event.startDate}}</td>
+              <td>{{event.endDate}}</td>
               <td>{{event.price}}</td>
               <td>{{event.location}}</td>
-              <!-- <td><button class="btn btn-danger" ng-click="remove(contact._id)">Remove</button></td>
-              <td><button class="btn btn-warning" ng-click="edit(contact._id)">Edit</button></td> -->
             </tr>
           </tbody>
         </table>

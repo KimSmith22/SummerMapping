@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" charset="utf-8"></script>
     <link rel="stylesheet" href="css/page.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
@@ -28,10 +29,10 @@
                   </a>
               </li>
               <li>
-                  <a href="#">Festivals</a>
+                  <a href="#" onclick="festivalSort()">Festivals</a>
               </li>
               <li>
-                  <a href="#">Carnivals</a>
+                  <button onclick="db.eventlist.find({category:carnivals})">Carnivals</button>
               </li>
               <li>
                   <a href="#">Other Events</a>
@@ -47,7 +48,9 @@
                   <button class="indent">Apply Filters</button>
               </li>
               <li>
-                  <a href="mailto:theapp@somemail.com">Contact</a>
+                  <a href="mailto:theapp@somemail.com ?subject=Add My Event to Your Site&body=Event%20Name:%0D%0A%0D%0AStart%20Date:
+                  %0D%0A%0D%0AEnd%20Date:%0D%0A%0D%0APrice:%0D%0A%0D%0ACity:%0D%0A%0D%0AState:%0D%0A%0D%0AZip%20Code:
+                  %0D%0A%0D%0APrimary%20Contact%20Name:%0D%0A%0D%0AEvent%20Contact%20Phone%20Number:" target="_blank">Add Your Event</a>
               </li>
           </ul>
       </nav>
@@ -67,24 +70,63 @@
 
         <h1 class="text-center">Summer Event List</h1>
 
+        <!-- <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Type 'Festival', 'Carnival', or 'Other'.."> -->
+
         <table class="table">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Start Date</th>
-              <th>End Date</th>
-              <th>Price</th>
-              <th>Location</th>
+
+              <td>
+                <a ng-click="sortType = 'name'; sortReverse = !sortReverse">
+                  Name
+                  <span class="caret"></span>
+                </a>
+              </td>
+
+              <td>
+                <a href="#" ng-click="sortType = 'startDate'; sortReverse = !sortReverse">
+                  Start Date
+                  <span class="caret"></span>
+                </a>
+              </td>
+
+              <td>
+                <a href="#" ng-click="sortType = 'endDate'; sortReverse = !sortReverse">
+                  End Date
+                  <span class="caret"></span>
+                </a>
+              </td>
+
+              <td>
+                <a href="#" ng-click="sortType = 'price'; sortReverse = !sortReverse">
+                  Price
+                  <span class="caret"></span>
+                </a>
+              </td>
+
+              <td>
+                <a href="#" ng-click="sortType = 'location'; sortReverse = !sortReverse">
+                  Location
+                  <span class="caret"></span>
+                </a>
+              </td>
+
             </tr>
           </thead>
+
           <tbody>
-            <tr ng-repeat="event in eventlist">
+
+            <tr ng-repeat="event in eventlist | orderBy:sortType:sortReverse | filter:q">
               <td>{{event.name}}</td>
               <td>{{event.startDate}}</td>
               <td>{{event.endDate}}</td>
               <td>{{event.price}}</td>
               <td>{{event.location}}</td>
             </tr>
+
+            <button ng-disabled="currentPage == 0" ng-click="currentPage = currentPage-1">Previous</button>
+            {{currentPage + 1}}/{{numberOfPages}}
+            <button ng-disabled="currentPage >= getData().length/pageSize - 1" ng-click="currentPage= currentPage + 1">Next</button>
           </tbody>
         </table>
       </div>
@@ -126,6 +168,7 @@
          $('#wrapper').toggleClass('toggled');
    });
  });
+
    </script>
 
 </body>

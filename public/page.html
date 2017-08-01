@@ -32,7 +32,7 @@
                   <a href="#" onclick="festivalSort()">Festivals</a>
               </li>
               <li>
-                  <button onclick="db.eventlist.find({category:carnivals})">Carnivals</button>
+                  <a href="#" onclick="db.eventlist.find({category:carnivals})">Carnivals</button>
               </li>
               <li>
                   <a href="#">Other Events</a>
@@ -116,7 +116,7 @@
 
           <tbody>
 
-            <tr ng-repeat="event in eventlist | orderBy:sortType:sortReverse | filter:q">
+            <tr ng-repeat="event in eventlist | orderBy:sortType:sortReverse">
               <td>{{event.name}}</td>
               <td>{{event.startDate}}</td>
               <td>{{event.endDate}}</td>
@@ -168,6 +168,7 @@
          $('#wrapper').toggleClass('toggled');
    });
  });
+
 
    </script>
 

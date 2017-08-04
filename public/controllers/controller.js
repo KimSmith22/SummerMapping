@@ -1,7 +1,8 @@
-var myApp = angular.module('myApp', []);
+var myApp = angular.module('myApp', [.]);
 
 myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
     console.log("Hello World from controller");
+
 
 var refresh = function(){
   $http.get('/eventlist/').then(function(response) {
@@ -45,6 +46,10 @@ refresh();
   $scope.deselect = function() {
     $scope.event = null;
     refresh();
+  };
+
+  $scope.festivalSort = function() {
+    alert('festival');
   };
 
   }]);﻿

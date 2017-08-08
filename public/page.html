@@ -70,7 +70,10 @@
 
         <h1 class="text-center">Summer Event List</h1>
 
-        <table class="table">
+
+        <input ng-model="searchText" id="myInput" placeholder="Search for festivals, carnivals, or other..">
+
+        <table class="table" id="textResults">
           <thead>
             <tr>
 
@@ -114,7 +117,7 @@
 
           <tbody>
 
-            <tr ng-repeat="event in eventlist |orderBy:sortType:sortReverse">
+            <tr ng-repeat="event in eventlist | filter:searchText:strict | orderBy:sortType:sortReverse">
               <td>{{event.name}}</td>
               <td>{{event.startDate}}</td>
               <td>{{event.endDate}}</td>
